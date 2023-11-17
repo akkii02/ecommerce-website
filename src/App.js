@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 function App() {
+  
   return (
     <div>
       <Header/>

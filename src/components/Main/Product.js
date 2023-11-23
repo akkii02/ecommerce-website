@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductArr from "./ProductArr";
 import "./Product.css";
+import CartContext from "../store/cart-context";
 const Product = () => {
+  const cartctx = useContext(CartContext);
+  const addToCart = (product) => {
+  const quantity = 1;
+  const updatedProduct = { ...product, quantity: quantity };
+  cartctx.addItem(updatedProduct);
+  console.log("Added to Cart:", updatedProduct);
+  console.log("Updated Cart Items:", cartctx.items);
+};
+
   return (
     <>
       <div className="container mx-auto">
@@ -13,7 +23,6 @@ const Product = () => {
               style={{ width: "450px" }}
             >
               <div className="card border-0 shadow-none">
-                {/* Add border-0 and shadow-none classes */}
                 <h5 className="card-title text-center mt-3 mb-5">
                   {product.title}
                 </h5>
@@ -29,7 +38,7 @@ const Product = () => {
                   <p className=" float-start">
                     <strong>Price: ${product.price}</strong>
                   </p>
-                  <button className="btn btn-primary float-end">
+                  <button className="btn btn-primary float-end" onClick={()=>addToCart(product)}>
                     Add to Cart
                   </button>
                 </div>

@@ -5,7 +5,7 @@ import { faYoutube, faFacebook, faSpotify } from '@fortawesome/free-brands-svg-i
 
 const Footer = () => {
   return (
-    <div className="text-light py-5" style={{ backgroundColor: '#007bff' }}>
+    <div className="text-light py-3 " style={{ backgroundColor: '#007bff' }}>
       <Container>
         <Row className="justify-content-center">
           <Col xs={12} md={6} className="text-center">

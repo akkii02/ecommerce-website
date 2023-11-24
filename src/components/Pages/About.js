@@ -2,9 +2,12 @@ import React from "react";
 
 import { Container, Image } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import GenericComponent from "../Navbar/GenericComponent";
 
 const About = () => {
   return (
+      <>
+      <GenericComponent/>
     <div className="mx-5">
       {/* <p
         className="display-5 text-center p-3 bg-secondary mt-1 text-white"
@@ -54,6 +57,7 @@ const About = () => {
         </p>
       </Container>
     </div>
+    </>
   );
 };
 

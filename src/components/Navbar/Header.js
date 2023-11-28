@@ -16,6 +16,9 @@ const Header = () => {
           </Nav.Link>
           <Nav.Link as={Link} to="/About">
             About
+          </Nav.Link> 
+          <Nav.Link as={Link} to="/Contact">
+            Contact
           </Nav.Link>
         </Nav>
         <div className="border p-2 m-1" style={{ borderColor: "#007bff" }}>

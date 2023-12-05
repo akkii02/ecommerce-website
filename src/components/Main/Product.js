@@ -29,11 +29,11 @@ const Product = () => {
           <ProductView product={selectedProduct} />
         ) : (
           <div className="row mx-auto" style={{ width: '90%' }}>
-            {ProductArr.map((product, index) => (
+            {ProductArr.map((product) => (
               <div
-                key={index}
-                className="col-md-6 m-5"
-                style={{ width: '400px', border: '2px solid red', marginLeft: '10%' }}
+                key={product.id}
+                className="col-md-6 m-5 rounded-2"
+                style={{ width: '400px', border: '2px solid grey', marginLeft: '8%' }}
                 onClick={() => showProductDetails(product)}
               >
                 <div className="card border-0 shadow-none">
@@ -46,13 +46,16 @@ const Product = () => {
                       style={{ width: '250px' }}
                     />
                   </div>
-                  <div className="card-body m-2">
+                  <div className="card-body m-1">
                     <p className="float-start">
                       <strong>Price: ${product.price}</strong>
                     </p>
                     <button
                       className="btn btn-primary float-end"
-                      onClick={() => addToCart(product)}
+                      onClick={(e) => {
+                        e.stopPropagation(); 
+                        addToCart(product);
+                      }}
                     >
                       Add to Cart
                     </button>

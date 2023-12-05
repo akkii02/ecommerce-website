@@ -1,11 +1,11 @@
 .image-container {
-  overflow: hidden; /* Ensure the overflow is hidden */
+  overflow: hidden; 
 }
 
 .zoom-on-hover {
-  transition: transform 0.3s ease-in-out; /* Define a smooth transition for the transform property */
+  transition: transform 0.3s ease-in-out; 
 }
 
 .zoom-on-hover:hover {
-  transform: scale(1.6); /* Scale the image to 1.6 times its original size on hover */
+  transform: scale(1.6); 
 }

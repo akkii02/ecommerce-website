@@ -1,12 +1,11 @@
-import { Outlet } from 'react-router-dom';
 import Header from '../Navbar/Header';
 import Footer from '../Footer/Footer';
 import CartProvider from '../store/CartProvider'
-const RootLayout = () => {
+const RootLayout = (props) => {
       return(
             <CartProvider>
             <Header/>
-            <Outlet/>
+            <main>{props.children}</main>
             <Footer/>
           </CartProvider>
       );

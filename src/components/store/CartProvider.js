@@ -1,37 +1,50 @@
-// CartProvider.js
 import React, { useState } from "react";
 import CartContext from "./cart-context";
 
-const CartProvider = (props) => {
-  const [cartState, setCartState] = useState({
-    items: [],
-    totalAmount: 0,
-  });
+const CardProvider = (props) => {
+  const [items, setItems] = useState([]);
 
-  const addItemToCartHandler = (item) => {
-    setCartState((prevState) => {
-      return {
-        items: [...prevState.items, item],
-        totalAmount: prevState.totalAmount + item.price,
-      };
+  const totalAmount = items.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+
+  const addItemToCardHandler = (item) => {
+    setItems((prevItems) => {
+      const updatedItems = [...prevItems];
+      const existingItemIndex = updatedItems.findIndex((existingItem) => existingItem.id === item.id);
+  
+      if (existingItemIndex !== -1) {
+        updatedItems[existingItemIndex].quantity += 1;
+      } else {
+        updatedItems.push({ ...item, quantity: 1 });
+      }
+      return updatedItems;
     });
   };
-
-  const removeItemFromCartHandler = (id, price) => {
-    setCartState((prevState) => {
-      const updatedItems = prevState.items.filter((item) => item.id !== id);
-      return {
-        items: updatedItems,
-        totalAmount: prevState.totalAmount - price,
-      };
+  
+  const removeItemFromCartHandler = (item) => {
+    setItems((prevItems) => {
+      const updatedItems = [...prevItems];
+      const existingItemIndex = updatedItems.findIndex((existingItem) => existingItem.id === item.id);
+  
+      if (existingItemIndex !== -1) {
+        if (item.quantity === 1) {
+          updatedItems.splice(existingItemIndex, 1);
+        } else {
+          updatedItems[existingItemIndex].quantity -= 1;
+        }
+      }
+  
+      return updatedItems;
     });
   };
+  
 
   const cartContext = {
-    items: cartState.items,
-    totalAmount: cartState.totalAmount,
-    addItem: addItemToCartHandler,
+    items: items,
+    addItem: addItemToCardHandler,
     removeItem: removeItemFromCartHandler,
+    totalAmount: totalAmount,
   };
 
   return (
@@ -41,4 +54,4 @@ const CartProvider = (props) => {
   );
 };
 
-export default CartProvider;
+export default CardProvider;

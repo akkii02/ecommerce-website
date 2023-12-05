@@ -22,13 +22,13 @@ const CardProvider = (props) => {
     });
   };
   
-  const removeItemFromCartHandler = (item) => {
+  const removeItemFromCartHandler = (id) => {
     setItems((prevItems) => {
       const updatedItems = [...prevItems];
-      const existingItemIndex = updatedItems.findIndex((existingItem) => existingItem.id === item.id);
+      const existingItemIndex = updatedItems.findIndex((existingItem) => existingItem.id === id);
   
       if (existingItemIndex !== -1) {
-        if (item.quantity === 1) {
+        if (updatedItems[existingItemIndex].quantity === 1) {
           updatedItems.splice(existingItemIndex, 1);
         } else {
           updatedItems[existingItemIndex].quantity -= 1;
@@ -38,6 +38,7 @@ const CardProvider = (props) => {
       return updatedItems;
     });
   };
+  
   
 
   const cartContext = {

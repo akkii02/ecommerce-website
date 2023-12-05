@@ -9,14 +9,19 @@ const Cart = () => {
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
-  const handleAddItem = (index) => {
-    cartCtx.addItem(cartCtx.items[index]);
+  const handleAddItem = (id) => {
+    const item = cartCtx.items.find((item) => item.id === id);
+    if (item) {
+      cartCtx.addItem(item);
+    }
   };
+  
 
-  const handleRemoveItem = (index) => {
-    cartCtx.removeItem(index);
-    console.log("R",index)
+  const handleRemoveItem = (id) => {
+    cartCtx.removeItem(id);
   };
+  
+  
 
   const calculateTotalPrice = () => {
     return cartCtx.items.reduce(
@@ -37,8 +42,8 @@ const Cart = () => {
           <Modal.Title>Your Shopping Cart</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {cartCtx.items.map((item, index) => (
-            <div className="border my-1 p-1" key={index}>
+          {cartCtx.items.map((item) => (
+            <div className="border my-1 p-1" key={item.id}>
               <p>{item.title}</p>
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <div className="d-flex align-items-center">
@@ -62,13 +67,13 @@ const Cart = () => {
                   <Button
                   className="mx-1"
                   variant="success"
-                  onClick={() => handleAddItem(index)}
+                  onClick={() => handleAddItem(item.id)}
                   >
                     +
                   </Button>
                   <Button
                     variant="danger"
-                    onClick={() => handleRemoveItem(index)}
+                    onClick={() => handleRemoveItem(item.id)}
                     >
                     -
                   </Button>

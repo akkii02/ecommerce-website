@@ -41,7 +41,7 @@ const Header = () => {
 
         <Nav className="ml-auto rounded-2" style={{marginRight:"10px"}}>
           {!authCtx.isLoggedIn && (
-            <Nav.Link as={Link} to="/Auth" style={{borderColor: "#007bff",padding:"10px", marginRight:"10px",font:"20px"}}>
+            <Nav.Link as={Link} to="/auth" style={{borderColor: "#007bff",padding:"10px", marginRight:"10px",font:"20px"}}>
               Login
             </Nav.Link>
           )}

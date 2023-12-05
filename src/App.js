@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { Switch, Route} from "react-router-dom";
+import { Switch, Route,Redirect} from "react-router-dom";
 import About from "./components/Pages/About";
 import RootLayout from "./components/Pages/RootLayout";
 import Product from "./components/Main/Product";
@@ -17,6 +17,8 @@ function App() {
   return (
     <RootLayout>
       <Switch>
+
+
         {!authCtx.isLoggedIn && (
           <Route path="/auth" exact>
             <AuthPage />
@@ -42,6 +44,10 @@ function App() {
             </Route>
           </>
         )}
+        
+        <Route path="*">
+          <Redirect to="/auth" />
+        </Route>
       </Switch>
     </RootLayout>
   );

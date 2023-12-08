@@ -58,8 +58,8 @@ const AuthForm = () => {
         });
       }
     }).then((data)=>{
-      console.log(data)
-      authCtx.login(data.idToken);
+      console.log("Authform email",data.email)
+      authCtx.login(data.idToken,data.email);
       history.replace("/");
     })
     .catch((err)=>{

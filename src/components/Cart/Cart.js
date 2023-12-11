@@ -38,8 +38,10 @@ const Cart = () => {
   const withoutAtSymbol = email.replace(/@/g, "");
   const emailWithoutDot = withoutAtSymbol.replace(/\./g, "");
 
-  // async function updateData(id, updatedData) {
-  //   const response = await fetch(`https://crudcrud.com/api/98a5e71a7a3245bfb22d2b8981ac2e0b/cart${emailWithoutDot}`);
+  // async function updateData(id) {
+  //   const response = await fetch(`https://crudcrud.com/api/c847a3e504474cb5872993e7c25f99f3/cart${emailWithoutDot}`,{
+  //     method:"GET",
+  //   });
   //   const data = await response.json();
   //   console.log("update", data);
   
@@ -48,25 +50,58 @@ const Cart = () => {
   //     return;
   //   }
   
-  //   const itemIdToUpdate = data[0]._id; 
-  
-  //   const res = await fetch(`https://crudcrud.com/api/98a5e71a7a3245bfb22d2b8981ac2e0b/cart${emailWithoutDot}/${itemIdToUpdate}`, {
-  //     method: 'PATCH', 
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(updatedData),
+  //   let itemIdUpdatedata;
+  //   const updatedItem = data.map((item) => {
+  //     if (item.id === id) {
+  //       itemIdUpdatedata = item._id;
+  //       return {
+  //         id: item.id,
+  //         imageUrl: item.imageUrl,
+  //         quantity: item.quantity + 1,
+  //         price: item.price * (item.quantity + 1),
+  //         title: item.title,
+  //       };
+  //     } else {
+  //       return item;
+  //     }
+  //   });
+  //   console.log("upID", itemIdUpdatedata);
+  //   console.log("upItem", updatedItem);
+  //   sendDataToDatabase(updatedItem)
+    
+  //   const deresponse = await fetch(`https://crudcrud.com/api/c847a3e504474cb5872993e7c25f99f3/cart${emailWithoutDot}/${itemIdUpdatedata}`, {
+  //     method: 'DELETE',
   //   });
   
-  //   if (res.ok) {
-  //     console.log('Item updated successfully');
+  //   if (deresponse.ok) {
+  //     console.log('Item deleted successfully');
   //   } else {
-  //     console.error('Failed to update item');
+  //     console.error('Failed to delete item');
+  //   }
+  // }
+  // async function sendDataToDatabase(cart) {
+  //   try {
+  //     const response = await fetch(`https://crudcrud.com/api/c847a3e504474cb5872993e7c25f99f3/cart${emailWithoutDot}`, {
+  //       method: "POST",
+  //       body: JSON.stringify(cart),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  
+  //     if (!response.ok) {
+  //       throw new Error(`Failed to POST data: ${response.status} ${response.statusText}`);
+  //     }
+  
+  //     const data = await response.json();
+  //     console.log("Data in Product", data);
+  //   } catch (error) {
+  //     console.error("Error posting data:", error);
   //   }
   // }
 
 async function deleteData() {
-  const response = await fetch(`https://crudcrud.com/api/98a5e71a7a3245bfb22d2b8981ac2e0b/cart${emailWithoutDot}`);
+  const response = await fetch(`https://crudcrud.com/api/c847a3e504474cb5872993e7c25f99f3/cart${emailWithoutDot}`);
   const data = await response.json();
   console.log("delete", data);
 
@@ -77,7 +112,7 @@ async function deleteData() {
 
   const itemIdToDelete = data[0]._id;
 
-  const res = await fetch(`https://crudcrud.com/api/98a5e71a7a3245bfb22d2b8981ac2e0b/cart${emailWithoutDot}/${itemIdToDelete}`, {
+  const res = await fetch(`https://crudcrud.com/api/c847a3e504474cb5872993e7c25f99f3/cart${emailWithoutDot}/${itemIdToDelete}`, {
     method: 'DELETE',
   });
 

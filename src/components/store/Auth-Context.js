@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 const AuthContext = React.createContext({
   token: "",
+  email:'',
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
@@ -24,12 +25,13 @@ console.log("email",email)
       localStorage.removeItem("tokens")
       localStorage.removeItem("email")
       setToken(null)
+      setEmail(null)
   };
 
   const contextValue = {
     token: token,
     isLoggedIn: userLoggedIn,
-    userEmail:email,
+    userEmail:email || "",
     login: loginHandler,
     logout: logoutHandler,
   };

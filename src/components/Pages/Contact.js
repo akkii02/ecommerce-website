@@ -23,6 +23,7 @@ const Contact = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
+      alert("Submitted Successfully");
     })
     nameInput.current.value="";
     emailInput.current.value=""

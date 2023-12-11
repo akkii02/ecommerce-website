@@ -30,7 +30,7 @@ const Product = () => {
   
   async function sendDataToDatabase(cart) {
     try {
-      const response = await fetch(`https://crudcrud.com/api/98a5e71a7a3245bfb22d2b8981ac2e0b/cart${emailWithoutDot}`, {
+      const response = await fetch(`https://crudcrud.com/api/c847a3e504474cb5872993e7c25f99f3/cart${emailWithoutDot}`, {
         method: "POST",
         body: JSON.stringify(cart),
         headers: {
